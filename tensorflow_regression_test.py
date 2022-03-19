@@ -11,11 +11,9 @@ def load_dataset():
 
 def build_model():
     return tf.keras.models.Sequential([
-        layers.Dense(13),
         # 中間層のニューロンの数は適当。
-        layers.Dense(100, activation='relu'),
+        layers.Dense(130, activation='relu'),
         layers.Dropout(0.1),
-        # 回帰はこれでいいのか？
         layers.Dense(1)
     ])
 
@@ -24,8 +22,6 @@ def main():
     x, y = load_dataset()
     x_train, x_test, y_train, y_test = train_test_split(x, y)
 
-    print(y_test)
-    return
     model =build_model()
     model.compile(optimizer='adam',
                   loss='mean_squared_error',
